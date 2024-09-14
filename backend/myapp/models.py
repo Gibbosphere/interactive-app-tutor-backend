@@ -81,12 +81,12 @@ class ClickElement(models.Model):
         ordering = ['position']
 
     def __str__(self):
-        return f"{self.element_id} ({self.test})"
+        return f"Click Element {self.position}"
 
 class TextInputElement(models.Model):
     click_element = models.ForeignKey(ClickElement, related_name='text_input_elements', on_delete=models.CASCADE)
     element_id = models.CharField(max_length=255)
-    required_input = models.TextField()
+    required_input = models.CharField(max_length=255)
 
     def __str__(self):
         return self.element_id
